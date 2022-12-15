@@ -1,588 +1,581 @@
 MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators
-    MSFT:
-        https://docs.microsoft.com/en-us/scripting/javascript/operators-javascript
-        https://docs.microsoft.com/en-us/scripting/javascript/reference/javascript-operators
-
-    MDN: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Looping_code
-    Learn JS: https://www.learn-js.org/en/Loops
-
-
+MSFT:https://docs.microsoft.com/en-us/scripting/javascript/operators-javascript
+    https://docs.microsoft.com/en-us/scripting/javascript/reference/javascript-operators
+MDN: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Looping_code
+Learn JS: https://www.learn-js.org/en/Loops
 
 JavaScript Variables And Data Types
 
-A variable is a value that can change based on a condition or information passed to a program. You can think of a program as a set of instructions that tell a computer what to do. In almost every program, data is used while the program is running. Data can be constants (fixed values that do not change) or variable (changeable) values.
-Data Types
+    A variable is a value that can change based on a condition or information passed to a program. 
+    You can think of a program as a set of instructions that tell a computer what to do. 
+    In almost every program, data is used while the program is running. 
+    Data can be constants (fixed values that do not change) or variable (changeable) values.
 
-In programming there is a concept of a data type. A data type defines the values that a variable can hold, and the operations that can be performed on it. JavaScript is very flexible in terms of data types, people call it a "weakly" or "loosely" typed language. What this means is that even though a variable may start as one type, it can be changed to another type at a later time. In "strongly" typed languages once a variable is set to a specific type it cannot be changed. "Strongly" typed languages provide more type safety, meaning you can assume that a variable will always be a certain type in a "strongly" typed language. However, "weakly" typed languages allow for a lot of flexibility.
+Data Types: Weakly v Strongly
+    A data type defines the values that a variable can hold, and the operations that can be performed on it.   
+    Weakly vs Strongly typed data:
+        "strongly" typed languages once a variable is set to a specific type it cannot be changed, provide more type safety, a variable will always be a certain type. 
+        "weakly" typed languages allow for a lot of flexibility. there are some common data types.
 
-Even in "weakly" typed languages, there are some common data types. Below are a few data types that exist in most languages:
-
+Primiative data types: 
     null: a defined non-value
+        null means that a variable is defined and is set to the value null
     integer: a number
     boolean: a true or false value
     character: a single character
     floating-point number: a number with a decimal point
     string: a group of characters (i.e. a word or multiple words)
+    undefined: indicates that a variable is not defined
+         different from null in that undefined means a variable is not defined.
 
-JavaScript has another type called undefined which indicates that a variable is not defined. This is different from null in that null means that a variable is defined and is set to the value null, whereas undefined means a variable is not defined. The above types are collectively known as "primitive" data types in JavaScript. Below are a few "complex" data types you will find in JavaScript:
-
-    Array: a high-level, list-like object that contains values and has a length
-
-let myArr = [1, 2, 3];
+Complex data types: Array, Objects, function
+    Array: a high-level, list-like object that contains values and has a length 
+        let myArr = [1, 2, 3];
 
     Object: The root level of any variable in JavaScript, defines a value that can have properties
-
-let myObj = { foo: 1, bar: 2 };
+        let myObj = { foo: 1, bar: 2 };
 
     Function: Objects that can be invoked and perform some computation. Often they have what's known as arguments passed in, and they can even return values.
 
-// Function declaration
-function multiply(arg1, arg2) {
-    return arg1 * arg2;
-}
+        // Function declaration
+        function multiply(arg1, arg2) {
+            return arg1 * arg2;
+        }
 
-// Function usage
-let result = multiply(2, 4);
+        // Function usage
+        let result = multiply(2, 4);
 
 Defining Variables In JavaScript
 
-In almost every program you will want to define variables. In JavaScript as well as other languages variables must be defined before they are used. The normal flow of a file in a program is top to bottom, so normally defined before use means that the variable definition appears above the variable usage. Consider the following code:
+    In almost every program you will want to define variables. 
+    In JavaScript as well as other languages variables must be defined before they are used. 
+    The normal flow of a file in a program is top to bottom, so normally defined before use means that the variable definition appears above the variable usage. 
+    Consider the following code:
 
-// Variable definition
-var num = 2;
+    // Variable definition
+    var num = 2;
 
-// Variable usage
-console.log(num);
+    // Variable usage
+    console.log(num);
 
-In the code above the variable num is defined, and it is assigned a value of 2 (an integer). It is then passed into a "function" called console.log as an argument. Since JavaScript is a weakly typed language, you do not need to explicitly declare num as an integer. In other strongly typed languages you may see num explicitly defined as a type, for example in C# (another common language) you might see the following:
+    In the code above the variable num is defined, and it is assigned a value of 2 (an integer). It is then passed into a "function" called console.log as an argument. Since JavaScript is a weakly typed language, you do not need to explicitly declare num as an integer. In other strongly typed languages you may see num explicitly defined as a type, for example in C# (another common language) you might see the following:
 
-// Variable definition
-int num = 2;
+    // Variable definition
+    int num = 2;
 
-// Variable usage
-Console.Write(num);
+    // Variable usage
+    Console.Write(num);
 
-The code above would accomplish the same thing as the JavaScript code, but in C#. In the JavaScript code above, the var keyword is used to define the variable num. This is an older keyword that people don't normally use in modern JavaScript programs. There are three different keywords you can use:
+    The code above would accomplish the same thing as the JavaScript code, but in C#. In the JavaScript code above, the var keyword is used to define the variable num. This is an older keyword that people don't normally use in modern JavaScript programs. There are three different keywords you can use:
 
-    var: declares a variable, optionally initializing it to a value
+        var: declares a variable, optionally initializing it to a value
 
-var x = 1;
+    var x = 1;
 
-if (x === 1) {
-    var x = 2;
+    if (x === 1) {
+        var x = 2;
+
+        // expected output: 2
+        console.log(x);
+    }
 
     // expected output: 2
     console.log(x);
-}
-
-// expected output: 2
-console.log(x);
 
     let: declares a block-scoped local variable, optionally initializing it to a value
 
-let x = 1;
+        let x = 1;
 
-if (x === 1) {
-    let x = 2;
+        if (x === 1) {
+            let x = 2;
 
-    // expected output: 2
-    console.log(x);
-}
+            // expected output: 2
+            console.log(x);
+        }
 
-// expected output: 1
-console.log(x);
+        // expected output: 1
+        console.log(x);
 
     const: declares a block-scoped local variable. The value is constant and cannot be re-assigned or redeclared
 
-const number = 42;
+        const number = 42;
 
-try {
-    number = 99;
-} catch (err) {
-    // expected output: TypeError: invalid assignment to const `number'
-    // Note - error messages will vary depending on browser
-    console.log(err);
-}
+        try {
+            number = 99;
+        } catch (err) {
+            // expected output: TypeError: invalid assignment to const `number'
+            // Note - error messages will vary depending on browser
+            console.log(err);
+        }
 
-// expected output: 42
-console.log(number);
+        // expected output: 42
+        console.log(number);
 
-It is recommended that you use const and let rather than var for safety reasons. If you notice in the code above for let and var, let variables are nearly identical to var variables with one additional functionality. A let variable exhibits what is called "block-scope." You will learn more about what that means later, but notice above that in the let block x is re-assigned to 2 inside an "if block," but remains as 1 outside the block.
-Naming Conventions
+        It is recommended that you use const and let rather than var for safety reasons. If you notice in the code above for let and var, let variables are nearly identical to var variables with one additional functionality. A let variable exhibits what is called "block-scope." You will learn more about what that means later, but notice above that in the let block x is re-assigned to 2 inside an "if block," but remains as 1 outside the block.
+        Naming Conventions
 
-JavaScript has naming conventions for variables, which loosely define what you should name variables. In general, you want to be descriptive about what your variable represent. For example:
+    JavaScript has naming conventions for variables, which loosely define what you should name variables. In general, you want to be descriptive about what your variable represent. For example:
 
-// bad
-let str = 2;
+        // bad
+        let str = 2;
 
-// good
-let num = 2;
+        // good
+        let num = 2;
 
-In addition to naming variables descriptively, you use lowercase and uppercase letters for different types of variables. In general JavaScript uses what's called "camelCase" for most variables. In "camelCase" the first letter of the variable name is lowercase, and then all subsequent words in the variable start with an uppercase letter. There are some data types in JavaScript that should be "CapitalCase," which you will learn about later. Often times when people are using constants they use "UPPER_SNAKE_CASE."
-
+        In addition to naming variables descriptively, you use lowercase and uppercase letters for different types of variables. In general JavaScript uses what's called "camelCase" for most variables. In "camelCase" the first letter of the variable name is lowercase, and then all subsequent words in the variable start with an uppercase letter. There are some data types in JavaScript that should be "CapitalCase," which you will learn about later. Often times when people are using constants they use "UPPER_SNAKE_CASE."
 
 JavaScript Objects and Arrays
-Data Types
+    Data Types
 
-In programming there is a concept of a data type. A data type defines the values that a variable can hold, and the operations that can be performed on it. JavaScript is very flexible in terms of data types, people call it a "weakly" or "loosely" typed language. What this means is that even though a variable may start as one type, it can be changed to another type at a later time. In "strongly" typed languages once a variable is set to a specific type it cannot be changed. "Strongly" typed languages provide more type safety, meaning you can assume that a variable will always be a certain type in a "strongly" typed language. However, "weakly" typed languages allow for a lot of flexibility.
-Data Sets
+    In programming there is a concept of a data type. A data type defines the values that a variable can hold, and the operations that can be performed on it. JavaScript is very flexible in terms of data types, people call it a "weakly" or "loosely" typed language. What this means is that even though a variable may start as one type, it can be changed to another type at a later time. In "strongly" typed languages once a variable is set to a specific type it cannot be changed. "Strongly" typed languages provide more type safety, meaning you can assume that a variable will always be a certain type in a "strongly" typed language. However, "weakly" typed languages allow for a lot of flexibility.
+    Data Sets
 
-Consider you have a collection of numbers: 2, 4, 6, 8, and 10. You need a way to represent this collection in memory (where a computer stores information). You could potentially store the numbers in a string "2 4 6 8 10", but that would make it really difficult to access the numbers and perform operations with them. If you wanted to sum the numbers in the collection, you would end up having to split the string with a space and then extract each number and add them.
+    Consider you have a collection of numbers: 2, 4, 6, 8, and 10. You need a way to represent this collection in memory (where a computer stores information). You could potentially store the numbers in a string "2 4 6 8 10", but that would make it really difficult to access the numbers and perform operations with them. If you wanted to sum the numbers in the collection, you would end up having to split the string with a space and then extract each number and add them.
 
-JavaScript provides a data type that makes it very easy to interact with collections known as an Array. Arrays are written as a list of values between square brackets. The representation of the collection above would look like this in JavaScript:
+    JavaScript provides a data type that makes it very easy to interact with collections known as an Array. Arrays are written as a list of values between square brackets. The representation of the collection above would look like this in JavaScript:
 
-let list = [2, 4, 6, 7, 10];
+    let list = [2, 4, 6, 7, 10];
 
-It is important to note that list is just the name we chose to store the array into, you could use any value for that variable. Now that we have the list, JavaScript provides a mechanism for accessing the items in the list. You use square brackets to access a value in an array by its index. The term index is used to represent the numbered position of a value in an array. Consider the following code:
+    It is important to note that list is just the name we chose to store the array into, you could use any value for that variable. Now that we have the list, JavaScript provides a mechanism for accessing the items in the list. You use square brackets to access a value in an array by its index. The term index is used to represent the numbered position of a value in an array. Consider the following code:
 
-let list = [2, 4, 6, 7, 10];
+    let list = [2, 4, 6, 7, 10];
 
-// Logs 6 to the console
-console.log(list[2]);
+    // Logs 6 to the console
+    console.log(list[2]);
 
-The code above will define our array of numbers, store it in a variable called "list" and then log the value at index "2" to the console. The comment mentions that it would log "6", and you may be thinking that the value at position "2" is 4. The reason "6" is logged is because arrays in JavaScript and many (but not all) other languages is "zero-indexed". This means that the first item in an array can be found at index 0. So the following code will log "2" to the console:
+    The code above will define our array of numbers, store it in a variable called "list" and then log the value at index "2" to the console. The comment mentions that it would log "6", and you may be thinking that the value at position "2" is 4. The reason "6" is logged is because arrays in JavaScript and many (but not all) other languages is "zero-indexed". This means that the first item in an array can be found at index 0. So the following code will log "2" to the console:
 
-let list = [2, 4, 6, 7, 10];
+    let list = [2, 4, 6, 7, 10];
 
-// Logs 2 to the console
-console.log(list[0]);
+    // Logs 2 to the console
+    console.log(list[0]);
 
-You can think of the index as the amount of items to skip when starting at the first item in an array. It is also possible to put some logic in between the square brackets when accessing array values. Consider the following code:
+    You can think of the index as the amount of items to skip when starting at the first item in an array. It is also possible to put some logic in between the square brackets when accessing array values. Consider the following code:
 
-let list = [2, 4, 6, 7, 10];
-let index = 2;
-let a = 5;
-let b = -3;
+    let list = [2, 4, 6, 7, 10];
+    let index = 2;
+    let a = 5;
+    let b = -3;
 
-// Logs 6 to the console
-console.log(list[2]);
+    // Logs 6 to the console
+    console.log(list[2]);
 
-// Logs 6 to the console
-console.log(list[1 + 1]);
+    // Logs 6 to the console
+    console.log(list[1 + 1]);
 
-// Logs 6 to the console
-console.log(list[index]);
+    // Logs 6 to the console
+    console.log(list[index]);
 
-// Logs 6 to the console
-console.log(list[a + b]);
+    // Logs 6 to the console
+    console.log(list[a + b]);
 
-All of the console.log statements above will result in the same thing being logged to the console.
-Properties
+    All of the console.log statements above will result in the same thing being logged to the console.
+    Properties
 
-Up to this point you have probably been using a couple properties without actually knowing what they are and how they exist. For example, if you have a string and want to log it's length you could write code like the following:
+    Up to this point you have probably been using a couple properties without actually knowing what they are and how they exist. For example, if you have a string and want to log it's length you could write code like the following:
 
-let greeting = 'Hello World';
+    let greeting = 'Hello World';
 
-// Logs 11 to the console
-console.log(greeting.length);
+    // Logs 11 to the console
+    console.log(greeting.length);
 
-The .length on the end of greeting is calling to access the length property that exists on all strings. Almost every single JavaScript data type has properties. The exceptions to that rules are null and undefined. Trying to access properties off of those values will result in errors.
+    The .length on the end of greeting is calling to access the length property that exists on all strings. Almost every single JavaScript data type has properties. The exceptions to that rules are null and undefined. Trying to access properties off of those values will result in errors.
 
-In JavaScript you can access properties of an object in two different ways: with a dot and with square brackets. The following code will accomplish the same thing:
+    In JavaScript you can access properties of an object in two different ways: with a dot and with square brackets. The following code will accomplish the same thing:
 
-let greeting = 'Hello World';
-let property = 'length';
+    let greeting = 'Hello World';
+    let property = 'length';
 
-// Logs 11 to the console
-console.log(greeting.length);
+    // Logs 11 to the console
+    console.log(greeting.length);
 
-// Logs 11 to the console
-console.log(greeting['length']);
+    // Logs 11 to the console
+    console.log(greeting['length']);
 
-// Logs 11 to the console
-console.log(greeting[property]);
+    // Logs 11 to the console
+    console.log(greeting[property]);
 
-It is highly recommended that you use dot notation when you know the property you are looking for. The bracket notation is a little more verbose, and should be reserved for when you need to access a dynamic property using a variable like in the greeting[property] example above.
-Methods
+    It is highly recommended that you use dot notation when you know the property you are looking for. The bracket notation is a little more verbose, and should be reserved for when you need to access a dynamic property using a variable like in the greeting[property] example above.
+    Methods
 
-Strings and Arrays both contain a length property. In addition to that they both contain properties that are functions. These are called methods.
+    Strings and Arrays both contain a length property. In addition to that they both contain properties that are functions. These are called methods.
 
-let greeting = 'Hello World';
+    let greeting = 'Hello World';
 
-// Logs "function" to the console
-console.log(typeof greeting.toUpperCase);
+    // Logs "function" to the console
+    console.log(typeof greeting.toUpperCase);
 
-// Logs "HELLO WORLD" to the console
-console.log(greeting.toUpperCase());
+    // Logs "HELLO WORLD" to the console
+    console.log(greeting.toUpperCase());
 
-All strings contain the same methods, and you can read more about them on MDN. Now take a closer look at the code above. greeting.toUpperCase() calls the toUpperCase method on all Strings, and without any arguments it is able to return HELLO WORLD. Properties that contain functions are called methods for this purpose, they have access to the value to which they belong. This will be explained in depth further on in this course. For now, know that when someone says "call the [y] method on x" they are in fact saying that "x" has a property on it called "y" and it is a function.
+    All strings contain the same methods, and you can read more about them on MDN. Now take a closer look at the code above. greeting.toUpperCase() calls the toUpperCase method on all Strings, and without any arguments it is able to return HELLO WORLD. Properties that contain functions are called methods for this purpose, they have access to the value to which they belong. This will be explained in depth further on in this course. For now, know that when someone says "call the [y] method on x" they are in fact saying that "x" has a property on it called "y" and it is a function.
 
-Arrays in JavaScript have some very useful methods for manipulating data. The following code shows you just a couple of methods on arrays:
+    Arrays in JavaScript have some very useful methods for manipulating data. The following code shows you just a couple of methods on arrays:
 
-let list = [2, 4, 6, 7, 10];
+    let list = [2, 4, 6, 7, 10];
 
-console.log(list);
-// -> [2, 4, 6, 7, 10]
+    console.log(list);
+    // -> [2, 4, 6, 7, 10]
 
-list.push(3);
+    list.push(3);
 
-console.log(list);
-// -> [2, 4, 6, 7, 10, 3];
+    console.log(list);
+    // -> [2, 4, 6, 7, 10, 3];
 
-console.log(list.pop());
-// -> 3
+    console.log(list.pop());
+    // -> 3
 
-console.log(list);
-// -> [2, 4, 6, 7, 10]
+    console.log(list);
+    // -> [2, 4, 6, 7, 10]
 
-list.unshift(3);
+    list.unshift(3);
 
-console.log(list);
-// -> [3, 2, 4, 6, 7, 10]
+    console.log(list);
+    // -> [3, 2, 4, 6, 7, 10]
 
-console.log(list.shift());
-// -> 3
+    console.log(list.shift());
+    // -> 3
 
-console.log(list);
-// -> [2, 4, 6, 7, 10]
+    console.log(list);
+    // -> [2, 4, 6, 7, 10]
 
-console.log(list.concat([3, 4]));
-// -> [2, 4, 6, 7, 10, 3, 4]
+    console.log(list.concat([3, 4]));
+    // -> [2, 4, 6, 7, 10, 3, 4]
 
-console.log(list);
-// -> [2, 4, 6, 7, 10]
+    console.log(list);
+    // -> [2, 4, 6, 7, 10]
 
-list = list.concat([3, 4]);
+    list = list.concat([3, 4]);
 
-console.log(list);
-// -> [2, 4, 6, 7, 10, 3, 4]
+    console.log(list);
+    // -> [2, 4, 6, 7, 10, 3, 4]
 
-    The push method adds values to the end of an array
-    The pop method removes the last value in an array and returns it
-    The unshift method adds values to the beginning of an array
-    The shift method removes the first value in an array and returns it
-    The concat method combines two arrays together and returns a new array (not changing either array)
+        The push method adds values to the end of an array
+        The pop method removes the last value in an array and returns it
+        The unshift method adds values to the beginning of an array
+        The shift method removes the first value in an array and returns it
+        The concat method combines two arrays together and returns a new array (not changing either array)
 
-The names of the methods may be confusing/seem not intuitive. However, they are based on programming operations for stacks and queues. A stack is a common programming data structure that allows you to push and pop values in a Last In First Out (LIFO) pattern. A queue is a structure that uses a First In First Out (FIFO) pattern.
+    The names of the methods may be confusing/seem not intuitive. However, they are based on programming operations for stacks and queues. A stack is a common programming data structure that allows you to push and pop values in a Last In First Out (LIFO) pattern. A queue is a structure that uses a First In First Out (FIFO) pattern.
 
-For more information on Array methods see the documentation on MDN.
-Objects
+    For more information on Array methods see the documentation on MDN.
+    Objects
 
-Now you have a decent amount of experience with Strings and Arrays in JavaScript. However, what if you need to represent a set of arbitrary data. Say for example you have a blog post. The posts consists of a title, category, body, and a list of tags. It would be awfully difficult to represent a post using any of the data types you currently know. This is where objects come in. Objects are arbitary collections of properties. Representing the post as an object is fairly simple:
+    Now you have a decent amount of experience with Strings and Arrays in JavaScript. However, what if you need to represent a set of arbitrary data. Say for example you have a blog post. The posts consists of a title, category, body, and a list of tags. It would be awfully difficult to represent a post using any of the data types you currently know. This is where objects come in. Objects are arbitary collections of properties. Representing the post as an object is fairly simple:
 
-let post = {
-    title: 'Welcome To My Blog',
-    category: 'Announcements',
-    body: 'Hello and welcome to my blog. I will be posting about my adventures as a developer',
-    tags: ['JS', 'CSS', 'HTML']
-};
+    let post = {
+        title: 'Welcome To My Blog',
+        category: 'Announcements',
+        body: 'Hello and welcome to my blog. I will be posting about my adventures as a developer',
+        tags: ['JS', 'CSS', 'HTML']
+    };
 
-console.log(post.title);
-// -> 'Welcome To My Blog'
+    console.log(post.title);
+    // -> 'Welcome To My Blog'
 
-console.log(post.tags[1]);
-// -> 'CSS'
+    console.log(post.tags[1]);
+    // -> 'CSS'
 
-The above code organizes the post into a logical collection of properties. Note that it is possible to nest objects as properties of other objects, etc. In the above vode tags is an Array as a property on post. The notation used above is called "object literal" notation. You will see further in this course that there is more than one way to create an object in JavaScript. Object literal notation starts with braces:
+    The above code organizes the post into a logical collection of properties. Note that it is possible to nest objects as properties of other objects, etc. In the above vode tags is an Array as a property on post. The notation used above is called "object literal" notation. You will see further in this course that there is more than one way to create an object in JavaScript. Object literal notation starts with braces:
 
-let myObject = null;
+    let myObject = null;
 
-Inside the braces there is a collection of properties separated by commas. Each property has a name followed by a colon and a value.
+    Inside the braces there is a collection of properties separated by commas. Each property has a name followed by a colon and a value.
 
-let myObject = {
-    propA: 'value a',
-    propB: 'value b'
-    'prop c': 'value c'
-};
+    let myObject = {
+        propA: 'value a',
+        propB: 'value b'
+        'prop c': 'value c'
+    };
 
-Notice above 'prop c' is a property on myObject, but it is not a valid binding name/number so it must be surrounded by quotes. It is common to write object properties on new lines, and indent them for better readability.
+    Notice above 'prop c' is a property on myObject, but it is not a valid binding name/number so it must be surrounded by quotes. It is common to write object properties on new lines, and indent them for better readability.
 
-Up to this point you have understood braces null to mean the start of a block of statements. Now we are introducing a new functionality in that they describe objects. While it may seem a little weird right now, in practice it's fairly easy to deal with both functionalities.
+    Up to this point you have understood braces null to mean the start of a block of statements. Now we are introducing a new functionality in that they describe objects. While it may seem a little weird right now, in practice it's fairly easy to deal with both functionalities.
 
-You don't always have to define all the properties of an object up front, sometimes it can be useful to assign them later. You do this with an =, similar to how you declare and assign a variable:
+    You don't always have to define all the properties of an object up front, sometimes it can be useful to assign them later. You do this with an =, similar to how you declare and assign a variable:
 
-let person = {
-    firstName: 'John',
-    lastName: 'Doe'
-};
+    let person = {
+        firstName: 'John',
+        lastName: 'Doe'
+    };
 
-console.log(person.email);
-// -> undefined
+    console.log(person.email);
+    // -> undefined
 
-person.email = 'john.doe@gmail.com';
-console.log(person.email);
-// -> 'john.doe@gmail.com'
+    person.email = 'john.doe@gmail.com';
+    console.log(person.email);
+    // -> 'john.doe@gmail.com'
 
-Sometimes it can be useful to get all the properties that exist on an object, you can do this with Object.keys:
+    Sometimes it can be useful to get all the properties that exist on an object, you can do this with Object.keys:
 
-let person = {
-    firstName: 'John',
-    lastName: 'Doe'
-};
+    let person = {
+        firstName: 'John',
+        lastName: 'Doe'
+    };
 
-console.log(Object.keys(person));
-// -> ['firstName', 'lastName']
+    console.log(Object.keys(person));
+    // -> ['firstName', 'lastName']
 
-There is also an Object.assign function that copies all properties from one object into another:
+    There is also an Object.assign function that copies all properties from one object into another:
 
-let person = {
-    firstName: 'John',
-    lastName: 'Doe'
-};
+    let person = {
+        firstName: 'John',
+        lastName: 'Doe'
+    };
 
-console.log(Object.assign(person, {
-    firstName: 'Jane',
-    email: 'jane.doe@gmail.com'
-}));
-// -> { firstName: 'Jane', lastName: 'Doe', email: 'jane.doe@gmail.com' }
+    console.log(Object.assign(person, {
+        firstName: 'Jane',
+        email: 'jane.doe@gmail.com'
+    }));
+    // -> { firstName: 'Jane', lastName: 'Doe', email: 'jane.doe@gmail.com' }
 
-This isn't the only way to change properties on an object, you can update an object's properties with the = operator:
+    This isn't the only way to change properties on an object, you can update an object's properties with the = operator:
 
-let person = {
-    firstName: 'John',
-    lastName: 'Doe'
-};
+    let person = {
+        firstName: 'John',
+        lastName: 'Doe'
+    };
 
-person.firstName = 'Jane';
+    person.firstName = 'Jane';
 
-console.log(person);
-// -> { firstName: 'Jane', lastName: 'Doe' }
+    console.log(person);
+    // -> { firstName: 'Jane', lastName: 'Doe' }
 
-Now that you know what Objects are, it is not a stretch to understand that Arrays are just a special kind of object used for storing sequences of things. In fact, Strings are also special types of objects used to store sequences of characters. So in a way Strings are like Arrays.
-Object Mutability
+    Now that you know what Objects are, it is not a stretch to understand that Arrays are just a special kind of object used for storing sequences of things. In fact, Strings are also special types of objects used to store sequences of characters. So in a way Strings are like Arrays.
+    Object Mutability
 
-You have observed up to this point that values in an object can be modified. Prior to now you have been dealing mostly with objects that cannot be modified, such as numbers and strings. Those are called "immutable" objects. It is not possible to change 1 to 2. Yes you can do let x = 1; x = 2, but that doesn't change 1 to 2, it simply changes x to 2. Objects are different. You can change the properties on an object, causing it to have different content at different times. Consider the following code:
+    You have observed up to this point that values in an object can be modified. Prior to now you have been dealing mostly with objects that cannot be modified, such as numbers and strings. Those are called "immutable" objects. It is not possible to change 1 to 2. Yes you can do let x = 1; x = 2, but that doesn't change 1 to 2, it simply changes x to 2. Objects are different. You can change the properties on an object, causing it to have different content at different times. Consider the following code:
 
-let a = {
-    value: 10
-};
+    let a = {
+        value: 10
+    };
 
-let b = a;
-let c = {
-    value: 10
-};
+    let b = a;
+    let c = {
+        value: 10
+    };
 
-console.log(a == b);
-// -> true
-console.log(a === b);
-// -> true
-console.log(a == c);
-// -> false
-console.log(a === c);
-// -> false
+    console.log(a == b);
+    // -> true
+    console.log(a === b);
+    // -> true
+    console.log(a == c);
+    // -> false
+    console.log(a === c);
+    // -> false
 
-a.value = 15;
+    a.value = 15;
 
-console.log(a.value);
-// -> 15
-console.log(b.value);
-// -> 15
-console.log(c.value);
-// -> 10
+    console.log(a.value);
+    // -> 15
+    console.log(b.value);
+    // -> 15
+    console.log(c.value);
+    // -> 10
 
-a = {
-    value: 10
-};
+    a = {
+        value: 10
+    };
 
-console.log(a.value);
-// -> 10
-console.log(b.value);
-// -> 15
-console.log(c.value);
-// -> 10
+    console.log(a.value);
+    // -> 10
+    console.log(b.value);
+    // -> 15
+    console.log(c.value);
+    // -> 10
 
-In the above example a and b are the same object, so changing a results in a change to b as well. However setting a to a new object disconnects it from the object that is assigned to b.
+    In the above example a and b are the same object, so changing a results in a change to b as well. However setting a to a new object disconnects it from the object that is assigned to b.
 
 JavaScript Operators
 
-JavaScript operators are used to assign values, compare values, perform arithmetic operations, and more. Many you may know already like addition +, subtraction -, multiplication *, and division /.
+    JavaScript operators are used to assign values, compare values, perform arithmetic operations, and more. Many you may know already like addition +, subtraction -, multiplication *, and division /.
 
- 
 JavaScript Expressions
 
-A JavaScript expression contains both operators and operands. It can be considered any valid unit of code that resolves to a value.
+    A JavaScript expression contains both operators and operands. It can be considered any valid unit of code that resolves to a value.
 
-    operand - what operators are applied to. For instance in the expression 8 * 3 there are two operands. The left operand is the 8 and the right operand is the 3. Operands can also be referred to as arguments.
-    operator - the verb of the expression that denotes what we're doing to the operands. JavaScript has the following types of operators:
-        assignment operators
-        comparison operators
-        arithmetic operators
-        bitwise operators
-        logical operators
-        string operators
-        conditional (or ternary) operators
-        comma operator
-        unary operator
-        relational operators
-    unary expression - requires a single operand, either before or after the operator: operator operand
+        operand - what operators are applied to. For instance in the expression 8 * 3 there are two operands. The left operand is the 8 and the right operand is the 3. Operands can also be referred to as arguments.
+        operator - the verb of the expression that denotes what we're doing to the operands. JavaScript has the following types of operators:
+            assignment operators
+            comparison operators
+            arithmetic operators
+            bitwise operators
+            logical operators
+            string operators
+            conditional (or ternary) operators
+            comma operator
+            unary operator
+            relational operators
+        unary expression - requires a single operand, either before or after the operator: operator operand
 
-++x;
+    ++x;
 
-or: operand operator
+    or: operand operator
 
-x++;
+    x++;
 
-    binary expression - requires two operands: operand1 operator operand2
+        binary expression - requires two operands: operand1 operator operand2
 
-3 + 4;
-6 * y;
+    3 + 4;
+    6 * y;
 
-    ternary expression - only JavaScript operator that creates a ternary expression is the conditional operator with the syntax: condition ? val1 : val2. If condition is true, the operator has the value of val1, otherwise it has the value of val2.
+        ternary expression - only JavaScript operator that creates a ternary expression is the conditional operator with the syntax: condition ? val1 : val2. If condition is true, the operator has the value of val1, otherwise it has the value of val2.
 
-(age >= 21) ? 'alcoholic' : 'non-alcoholic';
+    (age >= 21) ? 'alcoholic' : 'non-alcoholic';
 
- 
 Assignment Operators
 
-An assignment operator assigns a value to its left operand based on the value of its right operand. The simple assignment operator is =
+    An assignment operator assigns a value to its left operand based on the value of its right operand. The simple assignment operator is =
 
-x = y;
+    x = y;
 
-There are also compound assignment operators like the following examples:
+    There are also compound assignment operators like the following examples:
 
-x += y;
-x -= y;
+    x += y;
+    x -= y;
 
-Which essentially translate to
+    Which essentially translate to
 
-x = x + y;
-x = x - y;
+    x = x + y;
+    x = x - y;
 
-Destructuring
+    Destructuring
 
-For complex assignments you can use destructuring to extract data from arrays or objects using a syntax that mirrors the construction of array or object literals.
+    For complex assignments you can use destructuring to extract data from arrays or objects using a syntax that mirrors the construction of array or object literals.
 
-let foo = ['one', 'two', 'three'];
+    let foo = ['one', 'two', 'three'];
 
-// without destructuring
-let one = foo[0];
-let two = foo[1];
-let three = foo[2];
+    // without destructuring
+    let one = foo[0];
+    let two = foo[1];
+    let three = foo[2];
 
-// with destructuring
-let [one, two, three] = foo;
+    // with destructuring
+    let [one, two, three] = foo;
 
- 
 Comparison Operators
 
-A comparison operator compares its operands and returns a logical value (true or false) based on whether the comparison is true.
-Name	Operator	Description	True statements
-Equal	==	Returns true if the operands are equal	4 == '4'
-Not Equal	!=	Returns true if the operands are not equal	4 != '3'
-Strict Equal	===	Returns true if the operands are equal of the same type	let x = 4; x === 4;
-Strict Not Equal	!==	Returns true if the operands are of the same type but not equal, or are a different type	3 !== '3'
-Greater than	>	Returns true if the left operand is greater than the right operand	14 > 2
-Greater than or Equal	>=	Returns true if the left operand is greater than or equal to the right operand	14 >= '14'
-Less than	<	Returns true if the left operand is less than the right operand	2 < 14
-Less than or Equal	<=	Returns true if the left operand is less than or equal to the right operand	14 <= '14'
+    A comparison operator compares its operands and returns a logical value (true or false) based on whether the comparison is true.
+    Name	Operator	Description	True statements
+    Equal	==	Returns true if the operands are equal	4 == '4'
+    Not Equal	!=	Returns true if the operands are not equal	4 != '3'
+    Strict Equal	===	Returns true if the operands are equal of the same type	let x = 4; x === 4;
+    Strict Not Equal	!==	Returns true if the operands are of the same type but not equal, or are a different type	3 !== '3'
+    Greater than	>	Returns true if the left operand is greater than the right operand	14 > 2
+    Greater than or Equal	>=	Returns true if the left operand is greater than or equal to the right operand	14 >= '14'
+    Less than	<	Returns true if the left operand is less than the right operand	2 < 14
+    Less than or Equal	<=	Returns true if the left operand is less than or equal to the right operand	14 <= '14'
 
- 
 Arithmetic Operators
 
-An arithmetic operator takes numerical values (either literals or variables) as their operands and returns a single numerical value.
-Name	Operator	Description	Example
-Remainder	%	Binary operator that returns the integer remainder of dividing the two operands	10 % 3 returns 1
-Increment	++	Unary operator that adds one to its operand and returns the pre or post value depending on the operator placement	if y is 4, ++y sets y to 5 and returns 5, whereas y++ returns 4 and then sets y to 5
-Decrement	--	Unary operator that subtracts one from its operand and returns the pre or post value depending on the operator placement	if y is 4, --y sets y to 3 and returns 3, whereas y-- returns 4 and then sets y to 3
-Unary Negation	-	Unary operator that returns the negation of its operand	if y is 4, -y returns -4
-Unary Plus	+	Unary operator that attempts to convert the operand to a number if it is not already	+'4' returns 4, +true returns 1, +-4 returns -4
-
+    An arithmetic operator takes numerical values (either literals or variables) as their operands and returns a single numerical value.
+    Name	Operator	Description	Example
+    Remainder	%	Binary operator that returns the integer remainder of dividing the two operands	10 % 3 returns 1
+    Increment	++	Unary operator that adds one to its operand and returns the pre or post value depending on the operator placement	if y is 4, ++y sets y to 5 and returns 5, whereas y++ returns 4 and then sets y to 5
+    Decrement	--	Unary operator that subtracts one from its operand and returns the pre or post value depending on the operator placement	if y is 4, --y sets y to 3 and returns 3, whereas y-- returns 4 and then sets y to 3
+    Unary Negation	-	Unary operator that returns the negation of its operand	if y is 4, -y returns -4
+    Unary Plus	+	Unary operator that attempts to convert the operand to a number if it is not already	+'4' returns 4, +true returns 1, +-4 returns -4
  
 Bitwise Operators
 
-Bitwise operators treat their operands as a set of 32 bits (zeros and ones), rather than as decimal, hexadecimal, or octal numbers. For example, the decimal 9 has a binary representation of 1001. Bitwise operators perform their operations on such binary representations, but they return standard JavaScript numerical values.
-Name	Operator	Description	Example
-Bitwise AND	&	Binary operator that returns a one in each bit position for which the corresponding bits of both operands are ones	10 & 3 returns 2
-Bitwise OR	|	Binary operator that returns a zero in each bit position for which the corresponding bits of both operands are zeros	10 | 3 returns 11
-Bitwise XOR	^	Binary operator that returns a zero in each bit position for which the corresponding bits are the same and a one in each bit position for which the corresponding bits are different	10 ^ 3 returns 9
-Bitwise NOT	~	Unary operator that inverts the bits of its operand	~10 returns -11
-Left Shift	<<	Binary operator that shifts the left operand in binary representation the right operand bits to the left, shifting in zeros from the right	10 << 3 returns 80
-Sign-propagating Right Shift	>>	Binary operator that shifts the left operand in binary representation the right operand bits to the right, discarding bits shifted off	10 >> 3 returns 1
-Zero-fill Right Shift	>>>	Binary operator that shifts the left operand in binary representation the right operand bits to the right, discarding bits shifted off, and shifting in zeros from the left	10 >>> 3 returns 1
-
+    Bitwise operators treat their operands as a set of 32 bits (zeros and ones), rather than as decimal, hexadecimal, or octal numbers. For example, the decimal 9 has a binary representation of 1001. Bitwise operators perform their operations on such binary representations, but they return standard JavaScript numerical values.
+    Name	Operator	Description	Example
+    Bitwise AND	&	Binary operator that returns a one in each bit position for which the corresponding bits of both operands are ones	10 & 3 returns 2
+    Bitwise OR	|	Binary operator that returns a zero in each bit position for which the corresponding bits of both operands are zeros	10 | 3 returns 11
+    Bitwise XOR	^	Binary operator that returns a zero in each bit position for which the corresponding bits are the same and a one in each bit position for which the corresponding bits are different	10 ^ 3 returns 9
+    Bitwise NOT	~	Unary operator that inverts the bits of its operand	~10 returns -11
+    Left Shift	<<	Binary operator that shifts the left operand in binary representation the right operand bits to the left, shifting in zeros from the right	10 << 3 returns 80
+    Sign-propagating Right Shift	>>	Binary operator that shifts the left operand in binary representation the right operand bits to the right, discarding bits shifted off	10 >> 3 returns 1
+    Zero-fill Right Shift	>>>	Binary operator that shifts the left operand in binary representation the right operand bits to the right, discarding bits shifted off, and shifting in zeros from the left	10 >>> 3 returns 1
  
 Logical Operators
 
-Logical operators are typically used with Boolean (logical) values; when they are, they return a Boolean value. However, the && and || operators actually return the value of one of the specified operands, so if these operators are used with non-Boolean values, they may return a non-Boolean value.
-Name	Operator	Description	Example
-Logical AND	&&	Binary operator that returns the left operand if it can be converted to false; otherwise, returns the right operand. Thus, when used with Boolean values, returns true if both operands are true; otherwise, returns false	true && false returns false
-Logical OR	||	Binary operator that returns the left operand if it can be converted to true; otherwise, returns the right operand. Thus, when used with Boolean values, returns true if either operand is true; if both are false, returns false	true || false returns true
-Logical NOT	!	Unary operator that returns false if it's a single operand that can be converted to true; otherwise, returns true	!true returns false, !0 returns true
-
+    Logical operators are typically used with Boolean (logical) values; when they are, they return a Boolean value. 
+    However, the && and || operators actually return the value of one of the specified operands, so if these operators are used with non-Boolean values, they may return a non-Boolean value.
+    Name	Operator	Description	Example
+    Logical AND	&&	Binary operator that returns the left operand if it can be converted to false; otherwise, returns the right operand. Thus, when used with Boolean values, returns true if both operands are true; otherwise, returns false	true && false returns false
+    Logical OR	||	Binary operator that returns the left operand if it can be converted to true; otherwise, returns the right operand. Thus, when used with Boolean values, returns true if either operand is true; if both are false, returns false	true || false returns true
+    Logical NOT	!	Unary operator that returns false if it's a single operand that can be converted to true; otherwise, returns true	!true returns false, !0 returns true
  
 String Operators
 
-The + operator (along with the += compound operator) can also be used as a concatenation operator when dealing with strings.
+    The + operator (along with the += compound operator) can also be used as a concatenation operator when dealing with strings.
 
-console.log('alpha' + 'bet'); // logs the string 'alphabet' to the console
+    console.log('alpha' + 'bet'); // logs the string 'alphabet' to the console
 
- 
 Other Unary Operators
 
-delete
+    delete
 
-The delete operator deletes an object, an object's property, or an element at a specified index in an array
+        The delete operator deletes an object, an object's property, or an element at a specified index in an array
 
-delete objectName;
-delete objectName.property;
-delete objectName[index];
+        delete objectName;
+        delete objectName.property;
+        delete objectName[index];
 
-typeof
+    typeof
 
-The typeof operator returns a string indicating the type of the unevaluated operand with the syntax typeof operand. operand is the string, variable, keyword, or object for which the type is to be returned.
+        The typeof operator returns a string indicating the type of the unevaluated operand with the syntax typeof operand. operand is the string, variable, keyword, or object for which the type is to be returned.
 
-let shape = 'round';
-let size = 1;
-let foo = ['Apple', 'Mango', 'Orange'];
+        let shape = 'round';
+        let size = 1;
+        let foo = ['Apple', 'Mango', 'Orange'];
 
-typeof shape;       // returns "string"
-typeof size;        // returns "number"
-typeof foo;         // returns "object"
+        typeof shape;       // returns "string"
+        typeof size;        // returns "number"
+        typeof foo;         // returns "object"
 
-void
+    void
+        The void operator specifies an expression to be evaluated without returning a value with the syntax void expression. 
+        Expression is a JavaScript expression to evaluate.
 
-The void operator specifies an expression to be evaluated without returning a value with the syntax void expression. expression is a JavaScript expression to evaluate.
+        <a href="javascript:void(0)">Click here to do nothing</a>
 
-<a href="javascript:void(0)">Click here to do nothing</a>
-
- 
 Relational Operators
 
-in
+    in
 
-The in operator returns true if the specified property is in the specified object.
+    The in operator returns true if the specified property is in the specified object.
 
-let trees = ['redwood', 'bay', 'cedar', 'oak', 'maple'];
-3 in trees;        // returns true
-6 in trees;        // returns false
-'length' in trees; // returns true (length is an Array property)
+    let trees = ['redwood', 'bay', 'cedar', 'oak', 'maple'];
+    3 in trees;        // returns true
+    6 in trees;        // returns false
+    'length' in trees; // returns true (length is an Array property)
 
-'PI' in Math;        // returns true
+    'PI' in Math;        // returns true
 
-let mycar = { make: 'Honda', model: 'Accord', year: 1998 };
-'make' in mycar;  // returns true
+    let mycar = { make: 'Honda', model: 'Accord', year: 1998 };
+    'make' in mycar;  // returns true
 
 instanceof
 
-The instanceof operator returns true if the specified object is of the specified object type.
+    The instanceof operator returns true if the specified object is of the specified object type.
 
-let theDay = new Date(2018, 1, 1);
+    let theDay = new Date(2018, 1, 1);
 
-theDay instanceof Date;      // returns true
-
+    theDay instanceof Date;      // returns true
  
 Operator Precedence
 
-The precedence of operators determines the order they are applied when evaluating an expression. You can override operator precedence by using parentheses.
+    The precedence of operators determines the order they are applied when evaluating an expression. You can override operator precedence by using parentheses.
 
-The following table describes the precedence of operators, from highest to lowest:
-Operator Type	Operators
-member	. []
-call/create instance	() new
-negation/increment	! ~ - + ++ -- typeof void delete
-multiply/divide	* / %
-addition/subtraction	+ -
-bitwise shift	<< >> >>>
-relational	< <= > >= in instanceof
-equality	== != === !==
-bitwise-and	&
-bitwise-or	|
-logical-and	&&
-logical-or	||
-conditional	?:
-assignment	= += -= *= /= %= <<= >>= >>>= &= ^=	=
-comma	,
-
+    The following table describes the precedence of operators, from highest to lowest:
+    Operator Type	Operators
+    member	. []
+    call/create instance	() new
+    negation/increment	! ~ - + ++ -- typeof void delete
+    multiply/divide	* / %
+    addition/subtraction	+ -
+    bitwise shift	<< >> >>>
+    relational	< <= > >= in instanceof
+    equality	== != === !==
+    bitwise-and	&
+    bitwise-or	|
+    logical-and	&&
+    logical-or	||
+    conditional	?:
+    assignment	= += -= *= /= %= <<= >>= >>>= &= ^=	=
+    comma	,
 
 JavaScript Conditional Statements
 
@@ -984,54 +977,48 @@ loop1:
 JavaScript Functions
 
 A function is essentially a body of code that can be run by other, external code (or internal in the case of recursion). It is a sequence of statements that can potentially have values passed into it for its use and can optionally return a value. In JavaScript, functions are first-class objects, because they can have properties and methods just like any other object. What distinguishes them from other objects is that functions can be called. In brief, they are Function objects.
-
  
 Defining Functions
 
-To declare a function, you must use the following syntax:
+    To declare a function, you must use the following syntax:
 
-function functionName([param1[, param2[, ... paramN]]]) {
-   // function body
-}
+    function functionName([param1[, param2[, ... paramN]]]) {
+    // function body
+    }
 
-In the above code, functionName is where you declare the name of the function. [param1[, param2[, ... paramN]]] is a common syntax for defining parameters to a function. When you declare a function you won't include the brackets [], they exist to indicate that parameters are optional, and you can have any number of them*. When you are looking at documentation online you will see this same syntax used in many places, so keep it in mind.
+    In the above code, functionName is where you declare the name of the function. [param1[, param2[, ... paramN]]] is a common syntax for defining parameters to a function. When you declare a function you won't include the brackets [], they exist to indicate that parameters are optional, and you can have any number of them*. When you are looking at documentation online you will see this same syntax used in many places, so keep it in mind.
 
-*A function can have up to 255 parameters although it's probably best to keep the number of input parameters as small as you can.
+    *A function can have up to 255 parameters although it's probably best to keep the number of input parameters as small as you can.
 
-For example you can define a function called showError to alert an error.
+    For example you can define a function called showError to alert an error.
 
-function showError() {
-    // do something to show an error
-}
+    function showError() {
+        // do something to show an error
+    }
 
-or with a parameter:
+    or with a parameter:
 
-function showErrorMsg(msg) {
-    // do something to show the error message passed in
-}
+    function showErrorMsg(msg) {
+        // do something to show the error message passed in
+    }
 
- 
 Calling Functions
 
-Defining a function does not execute it. Defining the function simply names the function and specifies what to do when the function is called. Calling the function actually performs the specified actions with the indicated parameters.
+    Defining a function does not execute it. Defining the function simply names the function and specifies what to do when the function is called. Calling the function actually performs the specified actions with the indicated parameters.
 
-For example, to call the showError and showErrorMsg functions defined above you would call them by doing the following:
+    For example, to call the showError and showErrorMsg functions defined above you would call them by doing the following:
 
-showError();
-showErrorMsg('Something went wrong');
-
- 
+    showError();
+    showErrorMsg('Something went wrong');
 
 Returning Values
 
-JavaScript Functions can optionally return a value to be used elsewhere in your code.
+    JavaScript Functions can optionally return a value to be used elsewhere in your code.
 
-function square(x) {
-    return x * x;
-}
+    function square(x) {
+        return x * x;
+    }
 
-In this function, we take in x as an argument, and return the value of x * x. Now when we call the function square we can expect it to return a value based on the input we pass in.
+    In this function, we take in x as an argument, and return the value of x * x. Now when we call the function square we can expect it to return a value based on the input we pass in.
 
-let threeSquared = square(3); // threeSquared will now be equal to 9
-
-
+    let threeSquared = square(3); // threeSquared will now be equal to 9
